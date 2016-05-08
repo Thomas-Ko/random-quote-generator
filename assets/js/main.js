@@ -20,6 +20,8 @@ var controller = {
 	init: function(){
 		controller.getQuoteInfo();
 	},
+
+
 	//gets quote information from Random Famous Quotes API
 	//found on https://market.mashape.com/andruxnet/random-famous-quotes
 	getQuoteInfo : function(){
@@ -39,16 +41,30 @@ var controller = {
 	    	success: function( response ) {
 	        	console.log( response ); 
 	        	
+	        	//parses the JSON object and returns javascript object
 	        	var obj = JSON.parse(response);
 	        	
-	        	console.log(obj.quote);
-	        	console.log(obj.author);
-	        	console.log(obj.category);
+	        	controller.setCurrentQuote(obj);
 	    	}
 	  	}); 
-	} 
+	},
 
-}; 
+	//takes quote data from API call and sets it accordingly to model.currentQuote 
+	setCurrentQuote: function(obj) {
+		model.currentQuote= {
+			"quote": obj.quote,
+			"author": obj.author,
+			"category": obj.category,
+		};
+	},
+
+	//retrieves data from model.currentQuote
+	//will be used for the view
+	getCurrentQuote: function(){
+		return model.currentQuote;
+	}
+
+}; // end controller object
 
 
 /*====================
