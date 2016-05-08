@@ -19,8 +19,8 @@ var model = {
 var controller = {
 	init: function(){
 		controller.getQuoteInfo();
+		view.init();
 	},
-
 
 	//gets quote information from Random Famous Quotes API
 	//found on https://market.mashape.com/andruxnet/random-famous-quotes
@@ -58,13 +58,30 @@ var controller = {
 		};
 	},
 
-	//retrieves data from model.currentQuote
-	//will be used for the view
+	//retrieves data from model.currentQuote; will be used in view
 	getCurrentQuote: function(){
 		return model.currentQuote;
 	}
 
-}; // end controller object
+}; // end controller
+
+/*====================
+	VIEW
+====================*/
+
+view = {
+
+ init: function(){
+    //runs after the ajax call is complete;
+	$(document).ajaxStop(function () {
+		var quoteData = controller.getCurrentQuote();
+
+    	$( "body" ).append( "<h1>" +quoteData.quote + "</h1>");
+    	$( "body" ).append( "<h2>- " +quoteData.author + "</h2>");
+    });
+  },
+
+}; //end view
 
 
 /*====================
