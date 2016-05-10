@@ -79,6 +79,7 @@ view = {
 		$(document).ajaxStop(function () {
 			view.generateQuote();
 			view.buttonClick();
+			view.twitterClick();
     	});
   },
 
@@ -89,7 +90,7 @@ view = {
   	},
 
   	buttonClick: function() {
-  		$(".btn").on("click", function(){
+  		$(".quote-button").on("click", function(){
   			
   			// view.generateQuote();
   			/*It seems I do not need to run the above function because when the view.init function is fired once (as happens on intial page load), 
@@ -104,10 +105,21 @@ view = {
   			to attach (bind) to the click event. The method below is needed to prevent multiple ajax calls to be attached to the click event.
   			To better understand this, comment out the below line of code and uncomment //console.log(response)   (use CTRL+F) and, refresh the app, and
   			click the button repeatedly and watch the console. */
-  			$( this ).off('click');
+  			$(this).off('click');
   			/*  $( "button").unbind( "click" );   would also perform the desired action as .off. Or I could have ommitted the above .off method and the .unbind
   			method entirely and just made the the .on method into the .one method. It's all personal preference.
   			See more here: http://stackoverflow.com/questions/6120943/why-is-this-jquery-ajax-click-event-firing-multiple-times.*/
+  		});
+  	},
+
+  	//takes the quote on display and allows user to tweet it
+  	twitterClick: function(){
+  		$(".twitter-share-button").on("click", function(){
+  			var quoteData = controller.getCurrentQuote();
+  			var quote = encodeURIComponent(quoteData.quote);
+  			var author = encodeURIComponent(quoteData.author);
+  			console.log(quote);
+  			$(".twitter-share-button").attr("href", 'https://twitter.com/intent/tweet?text=' +quote + "%20-" + author);
   		});
   	}
 

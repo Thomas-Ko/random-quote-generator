@@ -38,6 +38,10 @@ h3 {
 	font-family: 'Nunito', sans-serif;
 }
 
+.twitter-share-button {
+	margin-right:20px;
+}
+
 
 @media screen and (max-width: 600px) {
  
