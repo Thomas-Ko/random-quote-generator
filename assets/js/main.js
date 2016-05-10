@@ -106,7 +106,7 @@ view = {
   			To better understand this, comment out the below line of code and uncomment //console.log(response)   (use CTRL+F) and, refresh the app, and
   			click the button repeatedly and watch the console. */
   			$(this).off('click');
-  			/*  $( "button").unbind( "click" );   would also perform the desired action as .off. Or I could have ommitted the above .off method and the .unbind
+  			/*  $(this).unbind("click");   would also perform the desired action as .off. Or I could have ommitted the above .off method and the .unbind
   			method entirely and just made the the .on method into the .one method. It's all personal preference.
   			See more here: http://stackoverflow.com/questions/6120943/why-is-this-jquery-ajax-click-event-firing-multiple-times.*/
   		});
