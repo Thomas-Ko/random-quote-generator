@@ -1,0 +1,46 @@
+body {
+	background: #fff;
+	text-align:center;
+	color:white;
+
+
+
+background: #403A3E; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #403A3E , #BE5869); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #403A3E , #BE5869); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+.quote-marks {
+	color: #27ae60;
+	/*font-size:50px;*/
+}
+
+h1 {
+	margin-bottom:120px;
+	font-size:16px;
+	font-weight:800;
+}
+
+.quote-box {
+	min-height:180px;
+	max-height:180px;
+}
+h2 {
+	font-size:40px;
+}
+
+
+
+h3 {
+	margin-bottom:80px;
+}
+
+
+.container {
+	max-width:700px;
+}
+
+.btn {
+	margin-bottom:30px;
+}

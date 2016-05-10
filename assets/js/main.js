@@ -88,12 +88,12 @@ view = {
 
   	generateQuote: function() {
   		var quoteData = controller.getCurrentQuote();
-  		$("h1").html(quoteData.quote);
-  		$("h2").html("-"+quoteData.author);
+  		$("#quote").html(quoteData.quote);
+  		$("h3").html("-"+quoteData.author);
   	},
 
   	buttonClick: function() {
-  		$("button").on("click", function(){
+  		$(".btn").on("click", function(){
   			
   			// view.generateQuote();
   			/*It seems I do not need to run the above function because when the view.init function is fired once (as happens on intial page load), 
