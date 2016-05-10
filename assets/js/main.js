@@ -45,10 +45,6 @@ var controller = {
 	        	var obj = JSON.parse(response);
 	        	
 	        	controller.setCurrentQuote(obj);
-
-
-
-
 	    	}
 	  	}); 
 	},
@@ -88,7 +84,7 @@ view = {
 
   	generateQuote: function() {
   		var quoteData = controller.getCurrentQuote();
-  		$("#quote").html(quoteData.quote);
+  		$("h2").html("&ldquo;" + quoteData.quote + "&rdquo;");
   		$("h3").html("-"+quoteData.author);
   	},
 
