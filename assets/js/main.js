@@ -75,40 +75,34 @@ var controller = {
 view = {
 
  	init: function(){   		
-   		//runs after the ajax call is complete;
-		$(document).ajaxStop(function () {
-			view.generateQuote();
+		// $(document).ajaxStop(function () {
+			view.renderQuote();
 			view.buttonClick();
 			view.twitterClick();
-    	});
+    	// });
   },
 
-  	generateQuote: function() {
-  		var quoteData = controller.getCurrentQuote();
-  		$("h2").html("&ldquo;" + quoteData.quote + "&rdquo;");
-  		$("h3").html("-"+quoteData.author);
+  	//runs each time after the ajax call is complete;
+  	renderQuote: function() {
+  		$(document).ajaxStop(function () {
+  			var quoteData = controller.getCurrentQuote();
+  			$("h2").html("&ldquo;" + quoteData.quote + "&rdquo;");
+  			$("h3").html("-"+quoteData.author);
+  		});
   	},
 
+  	//fires ajax call on click the "New Quote" button
   	buttonClick: function() {
   		$(".quote-button").on("click", function(){
   			
-  			// view.generateQuote();
+  			// view.renderQuote();
   			/*It seems I do not need to run the above function because when the view.init function is fired once (as happens on intial page load), 
-  			the .ajaxStop jQuery method ( which contains view.generate() ) will fire each
+  			the .ajaxStop jQuery method ( which contains view.renderQuote() ) will fire each
   			subsequent time an ajax call ends without having to have view.init() fired again. */ 
   			
   			//Fires an ajax call
-  			controller.getQuoteInfo();
 
-  			// DO NOT REMOVE!
-  			/* Running the ajax call ( using controller.getQuoteInfo() ) everytime the button is clicked causes the controller.getQuoteInfo function
-  			to attach (bind) to the click event. The method below is needed to prevent multiple ajax calls to be attached to the click event.
-  			To better understand this, comment out the below line of code and uncomment //console.log(response)   (use CTRL+F) and, refresh the app, and
-  			click the button repeatedly and watch the console. */
-  			$(this).off('click');
-  			/*  $(this).unbind("click");   would also perform the desired action as .off. Or I could have ommitted the above .off method and the .unbind
-  			method entirely and just made the the .on method into the .one method. It's all personal preference.
-  			See more here: http://stackoverflow.com/questions/6120943/why-is-this-jquery-ajax-click-event-firing-multiple-times.*/
+  			controller.getQuoteInfo();
   		});
   	},
 
