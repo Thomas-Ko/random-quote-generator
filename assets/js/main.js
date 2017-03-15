@@ -31,12 +31,12 @@ var controller = {
 	    	type: 'GET',
 	  		
 	  		headers: {
-	  			"X-Mashape-Key" : "6Iu9kPGuX0mshBsKo5KY7GLDwPuPp16l1r6jsneoYIvlUDSM1z",
+	  			// "X-Mashape-Key" : "",
 	  			Accept: "application/json",
 	  			"Content-Type": "application/x-www-form-urlencoded",
 	  		},
 
-	    	url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
+	    	// url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
 	    	
 	    	success: function( response ) {
 	        	//console.log(response); 
